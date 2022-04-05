@@ -1,0 +1,12 @@
+#!/bin/bash
+# insta485test
+
+# Stop on errors, print commands
+set -Eeuo pipefail
+set -x
+
+pycodestyle insta485
+pydocstyle insta485
+pylint --disable=cyclic-import --unsafe-load-any-extension=y --disable=assigning-non-slot insta485
+npx eslint --ext jsx insta485/js/
+pytest -v tests

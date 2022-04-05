@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insta485</title> <!-- put in the header! -->
+    <link href="{{ url_for('get_css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-between"> <!-- must have navbar-expand-lg! -->
+        <div class="navbar-nav">
+            <a href="/" class="navbar-brand divider px-3">  <!-- x:left&right -->
+                <img src="{{ url_for('get_logo') }}" id="logo" alt="logo">
+            </a>
+            <a class="nav-item nav-link text-body fs-4" href="/">Insta485</a>
+        </div>
+
+
+        <div>  <!-- so that they are put at the right -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link text-body text-decoration-none fw-bold divider" href="/explore/">explore</a>
+                    <a class="nav-item nav-link text-body text-decoration-none fw-bold mx-2" href="/users/{{logname}}/">{{logname}}</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <hr class="my-1">  <!-- make it higher -->
+ 
+    
+    <div class="mx-auto my-4" style="width: 40rem;">
+        <div class="fs-4 fw-bold">
+            Discover People
+        </div>
+
+        {% for person in not_following %}
+        <div class="card my-4" style="height: 8rem;">
+            <div class="card-body row" >
+                <div class="col-5">
+                    <a href="/users/{{person.username}}/" class="row fw-bold text-body text-decoration-none">
+                        <div class="col-5">
+                            <img class= "img-thumbnail" src="{{ url_for('get_file', filename=person.filename) }}" alt="user_img">
+                        </div>
+                        <div class="col-7 mt-3 fs-4">
+                            <p>{{person.username}}</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="offset-5 col-2 my-4">
+                    <form action="/following/" method="post" enctype="multipart/form-data">
+                        <input type="submit" name="follow" class="btn btn-primary" value="follow"/>
+                        <input type="hidden" name="username" value="{{ person.username }}"/>
+                        <input type="hidden" name="operation" value="follow"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>

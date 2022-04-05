@@ -1,0 +1,13 @@
+.img-thumbnail {
+    width: 80%;
+}
+
+#logo {
+    width: 40px;
+    height: 40px
+}
+
+.divider {
+    border-right: 1px solid #ccc
+}
+

@@ -1,0 +1,67 @@
+{% for post in posts %}
+<div class="card mx-auto m-2" style="width: 30rem;">
+
+    <!-- <div class="card-body row">
+        <div class="col-5">
+            <a href="/users/{{post.owner}}/" class="row fw-bold text-body text-decoration-none">
+                <div class="col-5">
+                    <img src="{{ url_for('get_file', filename=post.owner_img_url) }}" class="img-thumbnail" alt="{{post.owner}}">
+                </div>
+                <div class="col-7 mt-3">
+                    {{post.owner}}
+                </div>
+            </a>
+        </div>
+        <div class="col-4 offset-3 mt-3">
+            <a href="/posts/{{post.postid}}/" class="text-secondary fw-bold text-decoration-none">{{post.created}}</a>
+        </div>
+    </div> -->
+
+    <!-- <img src="{{ url_for('get_file', filename=post.filename) }}" class="card-img" alt="content"> -->
+
+
+    <div class="card-body">
+        <!-- {% if post.likes == 1%}
+            <p>{{post.likes}} like</p>
+        {% else %}
+            <p>{{post.likes}} likes</p>
+        {% endif %} -->
+
+        <!-- {% for comment in post.comments %}
+            <div class="justify-content-start">
+                <div class="d-inline-flex">
+                    <a href="/users/{{comment.owner}}/" class="fw-bold text-body text-decoration-none">
+                        {{comment.owner}}
+                    </a>
+                </div>
+                <div class="d-inline-flex">
+                    <p>{{comment.text}}</p>
+                </div>
+            </div>
+        {% endfor %} -->
+
+        <!-- def likeButton -->
+        <!-- {% if post.is_liked %}
+        <form action="/likes/?target=/" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="operation" value="unlike"/>
+            <input type="hidden" name="postid" value="{{ post.postid }}"/>
+            <input type="submit" name="unlike" class="btn btn-primary" value="unlike"/>
+        </form>
+        {% else %}
+        <form action="/likes/?target=/" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="operation" value="like"/>
+            <input type="hidden" name="postid" value="{{ post.postid }}"/>
+            <input type="submit" name="like" class="btn btn-primary" value="like"/>
+        </form>
+        {% endif %} -->
+
+        <!-- <form action="/comments/?target=/" method="post" enctype="multipart/form-data" class="my-2">
+            <input type="hidden" name="operation" value="create"/>
+            <input type="hidden" name="postid" value="{{ post.postid }}"/>
+            <input type="text" name="text" required/>
+            <input type="submit" name="comment" class="btn btn-info" value="comment"/>
+        </form> -->
+    </div>
+
+</div>
+{% endfor %} 

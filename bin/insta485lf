@@ -1,0 +1,9 @@
+#!/bin/bash
+# insta485format
+dir=./bin
+for file in "$dir"/*
+do
+    filename=$(basename "$file" .decaf)
+    # change CRLF to LF
+    vim "$file" -c "set ff=unix" -c ":wq"
+done

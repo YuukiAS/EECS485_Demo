@@ -1,0 +1,20 @@
+#!/bin/bash
+# insta485run
+
+# Stop on errors
+set -Eeuo pipefail
+
+# script_name=$0
+script_full_path=$(dirname "$0") # will remove the filename
+DB=$(dirname "$script_full_path")/var/insta485.sqlite3
+
+if [ -f "$DB" ]; then # if file exists (f for file)
+    echo "$DB exists."
+else
+    echo "$DB doesn't exist, create database."
+    $script_full_path/insta485db create
+fi
+
+export FLASK_ENV=development
+export FLASK_APP=insta485
+flask run --host 0.0.0.0 --port 8000

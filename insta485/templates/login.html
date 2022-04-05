@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insta485</title> <!-- put in the header! -->
+    <link href="{{ url_for('get_css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
+            <div class="navbar-nav">
+                <a href="/" class="navbar-brand divider px-3"> 
+                    <img src="{{ url_for('get_logo') }}" id="logo" alt="logo">
+                </a>
+                <a class="nav-item nav-link text-body fs-4" href="/">Insta485</a>
+            </div>
+
+
+            <div>  
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" 
+                        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link text-body text-decoration-none fw-bold mx-2" href="/accounts/login/">Login</a>
+                    </div>
+                </div>
+            </div>
+    </nav>
+
+    <hr class="my-1">  
+
+    <div class="mx-auto my-4" style="width: 40rem;">
+        <form action="/accounts/?target=/" method="post" enctype="multipart/form-data">
+            <input type="text" name="username" class="form-control" required placeholder="username"/>
+            <input type="password" name="password" class="form-control my-2" required placeholder="password"/>
+            <input type="submit" value="login" class="btn btn-primary my-2"/>
+            <input type="hidden" name="operation" value="login"/>
+            <div id="helpBlock" class="form-text text-body">
+                Don't have an account? 
+                <a class="text-decoration-none fw-bold text-body" href="/accounts/create/">
+                    Sign up
+                </a>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+</html>
